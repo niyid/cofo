@@ -1,0 +1,140 @@
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<!-- Constants -->
+	<constant name="struts.devMode" value="true" />
+	<constant name="struts.i18n.encoding" value="UTF-8" />
+	<constant name="struts.action.extension" value="jspx" />
+	<constant name="struts.objectFactory" value="spring" />
+	<constant name="struts.custom.i18n.resources" value="ApplicationResources" />
+	<constant name="struts.multipart.maxSize" value="10842738" />
+	<constant name="struts.ui.theme" value="xhtml" />
+	<constant name="struts.url.includeParams" value="none" />
+	<constant name="struts.ognl.allowStaticMethodAccess" value="true" />
+	<constant name="struts.convention.action.disableJarScanning" value="true" />
+
+	<!-- The following two need to be defined to enable slashes -->
+	<constant name="struts.enable.SlashesInActionNames" value="true" />
+	<constant name="struts.mapper.alwaysSelectFullNamespace" value="false" />
+
+	<!-- Configuration for the default package. -->
+	<package name="default" extends="struts-default">
+		<interceptors>
+			<interceptor name="jsonValidation" class="org.apache.struts2.json.JSONValidationInterceptor"/>
+			<!-- Copied from struts-default.xml and changed validation exclude methods -->
+			<interceptor-stack name="vasworksStack">
+				<interceptor-ref name="exception" />
+				<interceptor-ref name="alias" />
+				<!-- Strict parameters interceptor -->
+				<interceptor-ref name="params" />
+				<interceptor-ref name="servletConfig" />
+				<interceptor-ref name="prepare" />
+				<interceptor-ref name="i18n" />
+				<interceptor-ref name="chain" />
+				<!-- Application locking -->
+<!-- 			<interceptor-ref name="applock" /> -->
+				<interceptor-ref name="modelDriven" />
+				<interceptor-ref name="fileUpload" />
+<!-- 				<interceptor-ref name="gearsUpload" /> -->
+				<interceptor-ref name="checkbox" />
+				<interceptor-ref name="staticParams" />
+				<interceptor-ref name="params" />
+				<interceptor-ref name="conversionError" />
+				<interceptor-ref name="validation">
+					<param name="validateAnnotatedMethodOnly">true</param>
+					<param name="excludeMethods">cancel,execute,delete,edit,list,load,select</param>
+				</interceptor-ref>
+				<interceptor-ref name="jsonValidation" />
+				<interceptor-ref name="workflow">
+					<param name="excludeMethods">input,back,cancel</param>
+				</interceptor-ref>
+			</interceptor-stack>
+
+			<interceptor-stack name="defaultStack">
+				<interceptor-ref name="exception" />
+				<interceptor-ref name="alias" />
+				<interceptor-ref name="servletConfig" />
+				<interceptor-ref name="prepare" />
+				<interceptor-ref name="i18n" />
+				<interceptor-ref name="chain" />
+				<interceptor-ref name="debugging" />
+				<interceptor-ref name="profiling" />
+				<interceptor-ref name="scopedModelDriven" />
+				<interceptor-ref name="modelDriven" />
+				<interceptor-ref name="fileUpload" />
+<!-- 				<interceptor-ref name="gearsUpload" /> -->
+				<interceptor-ref name="checkbox" />
+				<interceptor-ref name="staticParams" />
+				<interceptor-ref name="params">
+					<param name="excludeParams">dojo\..*</param>
+				</interceptor-ref>
+				<interceptor-ref name="conversionError" />
+				<interceptor-ref name="validation">
+					<param name="validateAnnotatedMethodOnly">true</param>
+					<param name="excludeMethods">cancel,execute,delete,edit,list</param>
+				</interceptor-ref>
+				<interceptor-ref name="workflow">
+					<param name="excludeMethods">input,back,cancel,browse</param>
+				</interceptor-ref>
+			</interceptor-stack>
+			<interceptor-stack name="fileUploadStack">
+				<interceptor-ref name="fileUpload" />
+<!-- 				<interceptor-ref name="gearsUpload" /> -->
+				<interceptor-ref name="defaultStack" />
+			</interceptor-stack>
+			<interceptor-stack name="adminCheck">
+				<interceptor-ref name="defaultStack" /><!--
+				<interceptor-ref name="adminOnly" />
+			-->
+			</interceptor-stack>
+			<interceptor-stack name="jsonValidationWorkflowStack">
+			      <interceptor-ref name="basicStack"/>
+			      <interceptor-ref name="validation">
+			            <param name="excludeMethods">input,back,cancel</param>
+			      </interceptor-ref>
+			      <interceptor-ref name="jsonValidation"/>
+			      <interceptor-ref name="workflow"/>
+			 </interceptor-stack>			
+		</interceptors>
+		<default-interceptor-ref name="vasworksStack" />
+
+		<global-results>
+			<result name="error">/WEB-INF/jsp/generic-error.jsp</result>
+			<result name="download" type="stream">
+				<param name="contentType">application/x-binary</param>
+				<param name="inputName">downloadStream</param>
+				<param name="contentDisposition">filename="${downloadFileName}"</param>
+				<param name="bufferSize">2048</param>
+			</result>
+			<result name="login">/WEB-INF/jsp/user/login.jsp</result>
+		</global-results>
+
+	</package>
+
+
+	<!-- Configuration for the security related stuffs -->
+	<package name="login" extends="default">
+		<action name="login">
+			<result>/WEB-INF/jsp/user/login.jsp</result>
+		</action>
+		<action name="accessdenied">
+			<result>/WEB-INF/jsp/user/accessdenied.jsp</result>
+		</action>
+	</package>
+
+	<package name="public" extends="default">
+		<action name="index" class="loginRedirectAction">
+			<result name="success">/WEB-INF/jsp/index.jsp</result>
+			<result name="error">/WEB-INF/jsp/index.jsp</result>
+			<result name="input">/WEB-INF/jsp/index.jsp</result>
+		</action>
+		<action name="ajax/keepalive" class="loginRedirectAction">
+			<result>/WEB-INF/jsp/ajax/keepalive.jsp</result>
+			<result name="error">/WEB-INF/jsp/ajax/keepalive.jsp</result>
+			<result name="input">/WEB-INF/jsp/ajax/keepalive.jsp</result>
+		</action>
+	</package>
+
+	<include file="struts-project.xml" />
+</struts>

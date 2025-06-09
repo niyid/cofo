@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">C-of-O Survey</string>
+    <string name="btn_start_lbl">Start/Mark</string>
+    <string name="btn_done_lbl">Save</string>
+    <string name="btn_clear_lbl">Clear</string>
+    <string name="app_id_lbl">Schedule</string>
+</resources>

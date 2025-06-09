@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="
+    http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+    http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+    http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+
+	<bean id="agentAction" class="com.vasworks.cofo.struts.AgentAction">
+		<property name="agentService" ref="agentService" />
+	</bean>
+	
+	<bean id="countryStateSelectionAction" scope="prototype" class="com.vasworks.cofo.struts.json.CountryStateSelectionAction" parent="agentAction" />
+	
+	<bean id="occupationSelectionAction" scope="prototype" class="com.vasworks.cofo.struts.json.OccupationSelectionAction" parent="agentAction" />
+		
+	<bean id="nationalitySelectionAction" scope="prototype" class="com.vasworks.cofo.struts.json.NationalitySelectionAction" parent="agentAction" />
+						
+	<bean id="loginRedirectAction" scope="prototype" class="com.vasworks.cofo.struts.DashboardAction" parent="agentAction" />
+	
+	<bean id="imageDisplayAction" scope="prototype" class="com.vasworks.cofo.struts.agent.ImageDisplayAction" parent="agentAction" />
+	
+	<bean id="signatureDisplayAction" scope="prototype" class="com.vasworks.cofo.struts.agent.SignatureDisplayAction" parent="agentAction" />
+	
+	<bean id="fileDownloadAction" scope="prototype" class="com.vasworks.cofo.struts.agent.FileDownloadAction" parent="agentAction" />
+	
+	<bean id="dialogHomeAction" scope="prototype" class="com.vasworks.cofo.struts.agent.DialogHomeAction" parent="agentAction" />
+	
+	<bean id="approvalAction" scope="prototype" class="com.vasworks.cofo.struts.agent.ApprovalAction" parent="agentAction" />
+	
+	<bean id="certificateDocAction" scope="prototype" class="com.vasworks.cofo.struts.agent.CertificateDocAction" parent="agentAction" />
+	
+	<bean id="docFileViewAction" scope="prototype" class="com.vasworks.cofo.struts.agent.DocumentFileViewAction" parent="agentAction" />
+	
+	<bean id="cooApplicationAction" scope="prototype" class="com.vasworks.cofo.struts.agent.CooApplicationAction" parent="agentAction" />
+	
+	<bean id="polygonSurveyAction" scope="prototype" class="com.vasworks.cofo.struts.agent.PolygonSurveyAction" parent="agentAction" />
+	
+	<bean id="searchApplicationAction" scope="prototype" class="com.vasworks.cofo.struts.agent.SearchApplicationAction" parent="agentAction" />
+													
+</beans>

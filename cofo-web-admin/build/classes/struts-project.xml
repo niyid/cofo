@@ -1,0 +1,159 @@
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>	
+
+    	
+	<package name="download" namespace="/download" extends="default">
+	    					
+		<action name="fileView" class="docFileViewAction">
+			<result name="success" type="stream">
+				<param name="contentType">contentType</param> 
+				<param name="inputName">inputStream</param> 
+				<param name="contentDisposition">contentDisposition</param> 
+				<param name="bufferSize">1024</param>
+			</result> 
+		</action>
+		    					
+		<action name="signatureDisplay" class="signatureDisplayAction">
+			<result name="success" type="stream">
+				<param name="contentType">contentType</param> 
+				<param name="inputName">inputStream</param> 
+				<param name="contentDisposition">contentDisposition</param> 
+				<param name="bufferSize">1024</param>
+			</result> 
+		</action>	
+					    					
+		<action name="fileDownload" class="fileDownloadAction">
+			<result name="success" type="stream">
+				<param name="contentType">contentType</param> 
+				<param name="inputName">inputStream</param> 
+				<param name="contentDisposition">contentDisposition</param> 
+				<param name="bufferSize">1024</param>
+			</result> 
+		</action>	
+		
+	</package>
+	
+	<package name="agent" namespace="/agent" extends="default">
+	    
+	   	<action name="cooApplicationHome" class="dialogHomeAction">
+			<result name="input">/WEB-INF/jsp/agent/cooApplicationHome.jsp</result>
+			<result name="success">/WEB-INF/jsp/agent/cooApplicationHome.jsp</result>
+			<result name="error">/WEB-INF/jsp/agent/cooApplicationHome.jsp</result>
+	    </action>	
+	    	    
+	    <action name="streetSurvey" class="dialogHomeAction">
+			<result name="input">/WEB-INF/jsp/agent/streetSurvey.jsp</result>
+			<result name="success">/WEB-INF/jsp/agent/streetSurvey.jsp</result>
+			<result name="error">/WEB-INF/jsp/agent/streetSurvey.jsp</result>
+	    </action>	 	   	    
+	    <action name="approval" class="dialogHomeAction">
+			<result name="input">/WEB-INF/jsp/agent/approval.jsp</result>
+			<result name="success">/WEB-INF/jsp/agent/approval.jsp</result>
+			<result name="error">/WEB-INF/jsp/agent/approval.jsp</result>
+	    </action>
+	   	<action name="approvalRecordHome" class="dialogHomeAction">
+			<result name="input">/WEB-INF/jsp/agent/approvalRecordHome.jsp</result>
+			<result name="success">/WEB-INF/jsp/agent/approvalRecordHome.jsp</result>
+			<result name="error">/WEB-INF/jsp/agent/approvalRecordHome.jsp</result>
+	    </action>	 	   	     	   	    
+	   	<action name="liveApprovalDetailHome" class="dialogHomeAction">
+			<result name="success" type="chain">
+			    <param name="actionName">liveApprovalDetail</param>
+            	<param name="namespace">/agent/ajax</param>
+			</result>
+	    </action>	 		    
+	    <action name="dataImportHome" class="dialogHomeAction">
+			<result name="success" type="chain">
+			    <param name="actionName">dataImport</param>
+            	<param name="namespace">/agent/ajax</param>
+			</result>
+	    </action>	 		    
+	  </package>
+		
+	<package name="agent/ajax" namespace="/agent/ajax" extends="default">
+	   	<action name="viewCertDoc" class="certificateDocAction" method="listDocs">
+			<result name="input">/WEB-INF/jsp/agent/ajax/viewCertDoc.jsp</result>
+			<result name="success">/WEB-INF/jsp/agent/ajax/viewCertDoc.jsp</result>
+			<result name="error">/WEB-INF/jsp/agent/ajax/viewCertDoc.jsp</result>
+	    </action>
+	       		        	    	   	   	
+	   	<action name="certificateDocList" class="certificateDocAction" method="list">
+			<result name="input">/WEB-INF/jsp/agent/ajax/certificateDocList.jsp</result>
+			<result name="success">/WEB-INF/jsp/agent/ajax/certificateDocList.jsp</result>
+			<result name="error">/WEB-INF/jsp/agent/ajax/certificateDocList.jsp</result>
+	    </action>
+	    	   		        	    	   	   	
+	   	<action name="documentFileRecord" class="certificateDocAction">
+			<result name="input">/WEB-INF/jsp/agent/ajax/documentFileRecord.jsp</result>
+			<result name="success">/WEB-INF/jsp/agent/ajax/documentFileRecord.jsp</result>
+			<result name="error">/WEB-INF/jsp/agent/ajax/documentFileRecord.jsp</result>
+	    </action>		
+	   	
+	   	<action name="cooApplicationRecord" class="cooApplicationAction">
+			<result name="input">/WEB-INF/jsp/agent/ajax/cooApplicationRecord.jsp</result>
+			<result name="success">/WEB-INF/jsp/agent/ajax/cooApplicationRecord.jsp</result>
+			<result name="error">/WEB-INF/jsp/agent/ajax/cooApplicationRecord.jsp</result>
+	    </action>
+	    	   	
+	   	<action name="cooApplicationList" class="cooApplicationAction" method="list">
+			<result name="input">/WEB-INF/jsp/agent/ajax/cooApplicationList.jsp</result>
+			<result name="success">/WEB-INF/jsp/agent/ajax/cooApplicationList.jsp</result>
+			<result name="error">/WEB-INF/jsp/agent/ajax/cooApplicationList.jsp</result>
+	    </action>
+	   		    	   	
+	   	<action name="approvalPhotos" class="docFileViewAction">
+			<result name="input">/WEB-INF/jsp/agent/ajax/approvalPhotos.jsp</result>
+			<result name="success">/WEB-INF/jsp/agent/ajax/approvalPhotos.jsp</result>
+			<result name="error">/WEB-INF/jsp/agent/ajax/approvalPhotos.jsp</result>
+	    </action>	
+		    	   	
+	   	<action name="approvalSearch" class="approvalAction">
+			<result name="input">/WEB-INF/jsp/agent/ajax/approvalSearch.jsp</result>
+			<result name="success">/WEB-INF/jsp/agent/ajax/approvalSearch.jsp</result>
+			<result name="error">/WEB-INF/jsp/agent/ajax/approvalSearch.jsp</result>
+	    </action>
+	        	    	    	   	
+	   	<action name="liveApprovalList" class="approvalAction" method="list">
+			<result name="input">/WEB-INF/jsp/agent/ajax/liveApprovalList.jsp</result>
+			<result name="success">/WEB-INF/jsp/agent/ajax/liveApprovalList.jsp</result>
+			<result name="error">/WEB-INF/jsp/agent/ajax/liveApprovalList.jsp</result>
+	    </action>		   
+	    	   	
+	   	<action name="approvalDetail" class="approvalAction">
+			<result name="input">/WEB-INF/jsp/agent/ajax/approvalDetail.jsp</result>
+			<result name="success">/WEB-INF/jsp/agent/ajax/approvalDetail.jsp</result>
+			<result name="error">/WEB-INF/jsp/agent/ajax/approvalDetail.jsp</result>
+	    </action>	
+    	    	    
+    </package>
+    
+    <package name="json" namespace="/json" extends="swapper, json-default">
+        
+	    <action name="listStateByCountry" class="countryStateSelectionAction">
+      		<result name="success" type="stream">
+            	<param name="contentType">application/json</param>
+                <param name="inputName">jsonStream</param>
+                <param name="bufferSize">1024</param>
+            </result>		
+	    </action>	    	    
+
+	    <action name="listOccupation" class="occupationSelectionAction">
+      		<result name="success" type="stream">
+            	<param name="contentType">application/json</param>
+                <param name="inputName">jsonStream</param>
+                <param name="bufferSize">1024</param>
+            </result>		
+	    </action>
+    	    	    	
+	    <action name="listNationality" class="nationalitySelectionAction">
+      		<result name="success" type="stream">
+            	<param name="contentType">application/json</param>
+                <param name="inputName">jsonStream</param>
+                <param name="bufferSize">1024</param>
+            </result>		
+	    </action>	
+	</package>
+	
+</struts>

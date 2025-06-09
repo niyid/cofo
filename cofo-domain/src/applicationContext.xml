@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context" xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx" xmlns:p="http://www.springframework.org/schema/p" xmlns:util="http://www.springframework.org/schema/util" xmlns:jee="http://www.springframework.org/schema/jee"
+       xmlns:oxm="http://www.springframework.org/schema/oxm"
+       
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/util
+       http://www.springframework.org/schema/util/spring-util.xsd
+       http://www.springframework.org/schema/aop
+       http://www.springframework.org/schema/aop/spring-aop.xsd
+       http://www.springframework.org/schema/tx
+       http://www.springframework.org/schema/tx/spring-tx.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/jee 
+       http://www.springframework.org/schema/jee/spring-jee.xsd
+       http://www.springframework.org/schema/oxm http://www.springframework.org/schema/oxm/spring-oxm-3.0.xsd">
+
+    <context:annotation-config />
+     
+    <aop:aspectj-autoproxy proxy-target-class="true" />
+
+	<bean id="application-properties" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="ignoreUnresolvablePlaceholders">
+			<value>true</value>
+		</property>
+		<property name="locations">
+			<list>
+				<value>classpath:application.properties</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor" />
+
+	<bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="jpaVendorAdapter">
+			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+				<property name="database" value="${hibernate.database}" />
+				<property name="showSql" value="${hibernate.showSql}" />
+			</bean>
+		</property>	
+		<property name="jpaPropertyMap">
+			<map>
+				<entry key="hibernate.hbm2ddl.auto" value="${hibernate.hbm2ddl}" />
+				<entry key="hibernate.format_sql" value="${hibernate.formatSql}" />
+				<entry key="hibernate.show_sql" value="${hibernate.showSql}" />
+				<entry key="hibernate.dialect" value="${hibernate.dialect}" />
+
+				<!-- Connection pooling -->
+				<entry key="hibernate.c3p0.min_size" value="5" />
+				<entry key="hibernate.c3p0.max_size" value="20" />
+				<entry key="hibernate.c3p0.timeout" value="1800" />
+				<entry key="hibernate.c3p0.max_statements" value="50" />
+				<entry key="hibernate.jdbc.batch_size" value="100" />
+
+				<!-- Auditing -->
+				<!-- entry key="hibernate.ejb.interceptor" value="org.common.hibernate.AuditInterceptor" /> -->
+
+				<!-- Caching -->
+				<!--
+					<entry key="hibernate.cache.provider_class" value="org.hibernate.cache.EhCacheProvider" /> <entry key="hibernate.cache.use_query_cache" value="true" />
+				-->
+				<!-- Extra debugging -->
+				<entry key="hibernate.generate_statistics value" value="true" />
+				<entry key="hibernate.cache.use_structured_entries" value="true" />
+
+				<!-- Lucene -->
+				<entry key="hibernate.search.default.indexBase" value="${application.dataDir}/lucene" />
+				<entry key="hibernate.search.default.directory_provider" value="org.hibernate.search.store.FSDirectoryProvider" />
+				
+				<!-- JSR 303 Bean Validation -->
+				<entry key="javax.persistence.validation.mode" value="${validation.mode}" />
+				<entry key="javax.persistence.validation.group.pre-persist" value="${validation.group.pre-persist}" />
+				<entry key="javax.persistence.validation.group.pre-update" value="${validation.group.pre-update}" />
+				<entry key="javax.persistence.validation.group.pre-remove" value="${validation.group.pre-remove}" />
+			</map>
+		</property>
+	</bean>
+	
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="${database.driver}" />
+		<property name="url" value="${database.url}" />
+		<property name="username" value="${database.username}" />
+		<property name="password" value="${database.password}" />
+	</bean>
+	
+	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+		<property name="entityManagerFactory" ref="entityManagerFactory" />
+	</bean>
+	
+	<tx:annotation-driven transaction-manager="transactionManager" />
+	
+	<bean id="agentService" class="com.vasworks.cofo.service.AgentServiceImpl">
+	    <property name="smsSenderUrl" value="${smssender.url}" />
+	    <property name="smsSenderUser" value="${smssender.username}" />
+		<property name="smsSenderPass" value="${smssender.password}" />
+	</bean>
+   	<bean id="lobHandler" class="org.springframework.jdbc.support.lob.OracleLobHandler">
+        <property name="nativeJdbcExtractor" ref="nativeJdbcExtractor"/>
+    </bean>
+    <bean id="nativeJdbcExtractor" class="org.springframework.jdbc.support.nativejdbc.CommonsDbcpNativeJdbcExtractor"/>
+    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+    	
+	<bean id="customerService" class="com.vasworks.cofo.service.CustomerServiceImpl">
+	    <property name="smsSenderUrl" value="${smssender.url}" />
+	    <property name="smsSenderUser" value="${smssender.username}" />
+		<property name="smsSenderPass" value="${smssender.password}" />
+	</bean>
+	
+	<bean id="userService" class="com.vasworks.cofo.service.UserServiceImpl">
+		<property name="application" value="${application.securityId}" />
+	</bean>
+	
+	<bean id="vasworksAuthenticationProvider" class="com.vasworks.cofo.service.UserAuthentication">
+		<constructor-arg ref="userService" />
+	</bean>	
+</beans>

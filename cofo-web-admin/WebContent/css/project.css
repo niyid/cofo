@@ -1,0 +1,165 @@
+@CHARSET "UTF-8";
+
+/* Classes */
+.selected {
+	background-color: #AEEEEE;
+}
+
+.event-start {
+	background-color: #99CC99;
+	border: solid 1px #000000;
+	width: 100px;
+	white-space: no-wrap;	
+}
+.event-normal {
+	background-color: #FFFFCC;
+	border: solid 1px #000000;
+	width: 100px;
+	white-space: no-wrap;
+}
+.event-end {
+	background-color: #EE8262;
+	border: solid 1px #000000;
+	width: 100px;
+	white-space: no-wrap;	
+}
+
+.event-link {
+	white-space: no-wrap;
+}
+
+.calendarDayHourLabel {
+	font-style: bold;
+	background-color: #CDAA7D;
+	border: solid 1px #CDAA7D;
+	height: 35px;
+	text-align: center;
+	vertical-align: middle;
+}
+.calendarDayHourEvent {
+	font-style: italic;
+	background-color: #FFFFFF;
+	border: solid 1px #CDAA7D;
+	height: 35px;
+	text-align: center;
+	vertical-align: middle;
+}
+.calendarWeekDayLabel {
+	font-style: bold;
+	background-color: #CDAA7D;
+	border: solid 1px #CDAA7D;
+	height: 35px;
+	text-align: center;
+	vertical-align: middle;
+}
+.calendarWeekDayEvent {
+	font-style: italic;
+	background-color: #FFFFFF;
+	border: solid 1px #CDAA7D;
+	height: 35px;
+	text-align: center;
+	vertical-align: middle;
+}
+.calendarDayMonthLabel {
+	font-style: bold;
+	background-color: #CDAA7D;
+	border: solid 1px #CDAA7D;
+	height: 35px;
+	text-align: center;
+	vertical-align: middle;
+}
+.calendarDayMonthEvent {
+	font-style: italic;
+	background-color: #FFFFFF;
+	border: solid 1px #CDAA7D;
+	height: 35px;
+	text-align: center;
+	vertical-align: middle;
+}
+
+span.hint {color: Red;  font-size: 10px;}
+
+.message {
+	font-style: italic;
+	background-color: #FFFFFF;
+	border: solid 3px #CDAA7D;
+	height: 35px;
+	text-align: left;
+	vertical-align: middle;
+}
+
+.small-space {
+	font-style: italic;
+	background-color: #FFFFFF;
+	border: 0px;
+	height: 10px;
+	text-align: left;
+	vertical-align: middle;
+}
+
+.big-space {
+	font-style: italic;
+	background-color: #FFFFFF;
+	border: 0px;
+	height: 35px;
+	text-align: left;
+	vertical-align: middle;
+}
+
+.navButton {
+	white-space: nowrap;
+}
+
+.navPanel {
+	background: #FFFFFF;
+	white-space: nowrap;
+	border-width: 0;
+	border-style: solid;
+}
+
+.windowHeader {
+	border-bottom: solid 1px black;
+	background-color: #4f81bd; 
+	color: #ffffff;
+	min-height: 16px; 
+	padding: 3px 10px 2px 10px; 
+	font-weight: bold;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+}
+
+.windowPanel {
+	background-color: #f7f7f7; 
+	min-height: 16px; 
+	padding: 3px 10px 2px 10px; 
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+}
+
+.gllpLatlonPicker {
+  border: 2px solid #009;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  -webkit-box-shadow: 4px 4px 5px rgba(50, 50, 50, 0.75);
+  -moz-box-shadow: 4px 4px 5px rgba(50, 50, 50, 0.75);
+  box-shadow: 4px 4px 5px rgba(50, 50, 50, 0.75);
+}
+
+fieldset { border:1px solid #4f81bd; }
+
+.valueEstimate {
+	border: 2px dotted #4f81bd;
+	font-weight: bold;
+	font-size: medium;
+	font-family: monospace;
+	height: 35px;
+	width: 200px;
+	display: table-cell;
+	vertical-align: middle;
+}
+
+.slogan {
+	font-style: italic;
+	font-size: small;
+}

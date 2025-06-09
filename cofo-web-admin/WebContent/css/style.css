@@ -1,0 +1,317 @@
+body,td,p,textarea,li,td,div,span {
+	font-family: Verdana, Arial, sans-serif;
+}
+
+li,p {
+	line-height: 1.8em;
+}
+
+p {
+	margin: 0pt 0pt 1em 0em;
+}
+
+h1:first-child, h2:first-child, h3:first-child, h4:first-child, h5:first-child, h6:first-child { margin-top: 0px; }
+h4, h5, h6 { margin-top: 10px; }
+
+td p {
+	margin-bottom: 0em;
+}
+
+body {
+	font-size: 0.8em
+}
+
+form {
+	display: inline;
+	margin: 0;
+	padding: 0;
+}
+
+fieldset {
+	margin: 20px 0px 20px 0px;
+	padding: 0px 10px 10px 10px;
+}
+
+fieldset legend {
+	padding: 0px 5px 0px 5px;
+}
+
+table {
+	border-collapse: collapse;
+	width: 100%;
+}
+
+table.data-listing > thead > tr > td {
+	font-weight: bold;
+	border-bottom: solid 1px black;
+	vertical-align: bottom;
+}
+
+table.data-listing > thead > tr:last-child > td {
+	font-weight: bold;
+	border-bottom: solid 2px black;
+}
+
+table tfoot td, tr.tfoot > td {
+	font-weight: bold;
+}
+
+table.data-listing > tfoot > tr:first-child > td, tr.tfoot > td {
+	font-weight: bold;
+	border-top: solid 2px black;
+}
+
+tr.tfoot > td {
+	border-bottom: solid 1px black;
+}
+
+table td {
+	vertical-align: top;
+	padding: 2px 4px 2px 2px;
+}
+
+a img {
+	border-style: none;
+}
+
+a, a:active, a:visited {
+	color: #303030;
+	text-decoration: none;
+	border-bottom: dotted 1px #303030;
+}
+
+a:visited {
+	
+}
+
+a:hover {
+	color: #CF5A0C;
+	border-bottom: solid 1px #CF5A0C;
+}
+
+.printonly {
+	display: none;
+}
+
+/** Error messages */
+div#errorMessages,div.errorMessage {
+	margin: 0.5em 0.5em 1em 0.5em;
+	padding: 1em;
+	border: solid 1px red;
+	background-color: Pink;
+}
+
+div#errorMessages img.icon,.errorMessage img.icon {
+	position: relative;
+	top: 3px;
+}
+
+span.errorMessage {
+	color: Red;
+}
+
+div#actionMessages,div.actionMessage {
+	margin: 0.5em 0.5em 1em 0.5em;
+	padding: 1em;
+	border: 1px solid #009900;
+	background-color: #DDFFDD;
+}
+
+div#actionMessages img.icon,div.actionMessage img.icon {
+	position: relative;
+	top: 3px;
+}
+
+span.actionMessage {
+	color: Black;
+}
+
+div.accessionbox {
+	margin: 0.5em 0.5em 1.5em 0.5em;
+	padding: 0.5em;
+	float: left;
+	width: 20em;
+	height: 11em;
+	overflow: hidden;
+	line-height: 1.3em
+}
+
+div.marked {
+	background-color: #e8e8e8;
+}
+
+div.accessionbox:hover {
+	background-color: #eeeeee;
+}
+
+table.inputform {
+	width: 100%;
+}
+
+table.inputform input[type=text],table.inputform input[type=password] {
+	width: 100%;
+}
+
+table.inputform textarea {
+	width: 100%;
+	height: 60px;
+	font-size: 12px;
+}
+
+table.inputform label {
+	
+}
+
+table.inputform > tbody > tr > td:first-child {
+	text-align: right;
+	padding-right: 20px;
+}
+
+table.inputform td.tdLabel {
+	width: 200px;
+}
+
+table.inputform tr.identifying>td {
+	font-weight: bold;
+}
+
+table.inputform tr.identifying>td em {
+	font-weight: normal;
+}
+
+table.inputform tr[errorfor] {
+	display: none;
+}
+
+td.ar {
+	text-align: right;
+	padding-right: 16px;
+}
+
+table.data-listing {
+	width: 100%;
+	margin: 0px 0px 15px 0px;
+}
+
+table.data-listing td {
+	padding: 2px 4px 2px 4px;
+}
+
+table.data-listing td.ar {
+	padding: 2px 16px 2px 4px;
+}
+
+table.data-listing tbody tr.row-error {
+	color: Red;
+}
+
+table.data-listing > tbody > tr:hover > td {
+	background-color: #e2e2e2;
+}
+
+table.data-listing > tbody > tr > td {
+	border-bottom: 1px solid #d0d0d0;
+}
+
+table.data-listing tbody td.identifying {
+	font-weight: bold;
+	background-color: #f0f0f0;
+}
+
+table.data-listing tbody td.identifying em {
+	font-weight: normal;
+	font-style: normal;
+}
+
+table.inputform input[type='submit'],table.inputform input[type='button'],table.inputform input[type='reset'] {
+	padding: 3px 5px;
+	margin: 3px 8px;
+	min-width: 100px;
+}
+
+div.autocomplete {
+  position:absolute;
+  width:400px;
+  background-color:white;
+  border:1px solid #888;
+  margin:0;
+  padding:0;
+}
+div.autocomplete ul {
+  list-style-type:none;
+  margin:0;
+  padding:0;
+  text-align:left;
+}
+div.autocomplete ul li.selected { background-color: #ffb;}
+div.autocomplete ul li {
+  list-style-type:none;
+  display:block;
+  margin:0;
+  padding:2px;
+  cursor:pointer;
+}
+
+div.autocomplete ul li.selected { background-color: #DDFFDD; }
+
+input.date-picker { width: 80px; }
+
+ul.file-list { list-style-type: none; padding: 0; margin: 0; }
+ul.file-list li { list-style-position: inside; background-position: 0; background-repeat: no-repeat; padding-left: 20px; }
+ul.file-list li.directory { font-weight: bold; background-image: url(../img/directory.png); }
+ul.file-list li.file { background-image: url(../img/file.png); }
+
+div.upload-bar { margin: 5px 0px 5px 0px; } 
+div.upload-progress { height: 20px; background-color: #DDFFDD; border-style: solid 1px Gray; overflow: hidden; margin: 5px 0px; padding-left: 4px; }
+div.upload-complete { width: 100%; background-color: Green; color: White; }
+div.upload-aborted { background-color: Red; color: White; }
+div.upload-bar div.upload-log { display: none; }
+div.upload-bar div.upload-queue-status { padding: 3px; }
+
+.file-drop-zone { display: none; background-color: #DDFFDD; border: solid 1px Gray; padding: 3px 5px; margin: 5px 0px; }
+.file-gears-browse { display: none; } 
+
+.gears-only, .gears-missing { display: none; }
+
+div.button-bar { border: solid 1px Gray; background-color: #ECFFBF; margin: 20px 0px 20px 0px; padding: 6px 10px; }
+div.button-bar input[type=button], div.button-bar input[type=submit], div.button-bar input[type=reset] { font-size:16;font-weight:Bold; } 
+
+
+/** Collapse element */
+div.collapse > div.collapse-heading, div.collapse > div.collapse-heading-collapsed {
+	margin: 10px 0px 5px 0px; font-weight: bold;  
+}
+div.collapse > div.collapse-heading-collapsed { display: none; }
+div.collapse > div.collapse-heading { display: block; }
+div.collapse > div.collapse-content { display: block; }
+
+div.collapsed > div.collapse-heading { display: none; }
+div.collapsed > div.collapse-heading-collapsed { display: block; }
+div.collapsed > div.collapse-content { display: none; }
+
+body { font-size: 62.5%; }
+
+.summaryTitle {
+line-height: 0.5;
+text-align: left;
+color: #17365D;
+font-size: 26pt;
+font-family: "Cambria";
+border-style: none;
+}
+
+.summarySubTitle {
+line-height: 0.5;
+text-align: right;
+color: #17365D;
+font-size: 9pt;
+font-family: "Cambria";
+border-style: none;
+}
+
+.summaryBody {
+line-height: 1.5;
+color: #17365D;
+font-size: 11pt;
+font-family: "Cambria";
+}

@@ -1,0 +1,30 @@
+<decorators defaultdir="/decorators">
+	<excludes>
+		<pattern>/40*.jsp</pattern>
+		<pattern>/*ajax=true*</pattern>
+		<pattern>/script/**</pattern>
+		<pattern>/css/**</pattern>
+		<pattern>**/struts/**</pattern>
+		<pattern>**/common/**</pattern>
+		<pattern>/resources/*</pattern>
+		<pattern>/*search*.*</pattern>
+		<pattern>**/ajax/**</pattern>
+		<pattern>**/agent/**</pattern>
+		<pattern>**/json/**</pattern>
+		<pattern>**/upload/**</pattern>
+    	<pattern>/scripts/jquery/*</pattern>
+    </excludes>
+	<decorator name="admin" page="admin.jsp">
+		<pattern>/admin/*</pattern>
+	</decorator>		
+	<decorator name="plain" page="plain.jsp">
+		<pattern>/accessDenied.*</pattern>
+		<pattern>/application-locked.*</pattern>
+		<pattern>/doc/**</pattern>		
+		<pattern>/remind*</pattern>
+		<pattern>/accessDenied.*</pattern>
+	</decorator>
+	<decorator name="default" page="default.jsp">
+		<pattern>/*</pattern>
+	</decorator>
+</decorators>

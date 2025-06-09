@@ -1,0 +1,59 @@
+<LinearLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:map="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main"
+    android:orientation="vertical"
+    android:layout_width="match_parent" 
+    android:layout_height="match_parent">
+	       <LinearLayout
+			    android:layout_width="fill_parent"
+			    android:layout_height="0dp"
+			    android:orientation="vertical"
+			    android:layout_weight="35">
+			    
+			    <Button
+			        android:id="@+id/btnStart"
+			        android:layout_width="fill_parent"
+			        android:layout_height="wrap_content"
+			        android:textAppearance="@android:style/TextAppearance.Large"
+			        android:text="@string/btn_start_lbl"
+			        android:onClick="markVertex" />
+			    <Button
+			        android:id="@+id/btnDone"
+			        android:layout_width="fill_parent"
+			        android:layout_height="wrap_content"
+			        android:textAppearance="@android:style/TextAppearance.Large"
+			        android:text="@string/btn_done_lbl"
+			        android:enabled="false" />
+			    <Button
+			        android:id="@+id/btnClear"
+			        android:layout_width="fill_parent"
+			        android:layout_height="wrap_content"
+			        android:textAppearance="@android:style/TextAppearance.Large"
+			        android:text="@string/btn_clear_lbl"
+			        android:enabled="false"
+			        android:onClick="clearVertices" />
+			    <Spinner 
+			        android:id="@+id/schedule" 
+			        android:layout_width="fill_parent" 
+			        android:layout_height="wrap_content" 
+			        android:hint="@string/app_id_lbl" />	    
+			
+			</LinearLayout>
+			
+	<com.google.android.gms.maps.MapView 
+	    android:id="@+id/surveyMap"
+        android:layout_width="fill_parent" 
+        android:layout_height="0dp"
+        android:layout_weight="65"
+		map:cameraZoom="14"
+		map:mapType="hybrid"
+		map:uiCompass="false"
+		map:uiRotateGestures="true"
+		map:uiScrollGestures="false"
+		map:uiTiltGestures="true"
+		map:uiZoomControls="false"
+		map:uiZoomGestures="true"   	
+   	/>
+
+</LinearLayout>
